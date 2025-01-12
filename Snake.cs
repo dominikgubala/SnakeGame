@@ -49,11 +49,15 @@ class Program
 
         DateTime tijd = DateTime.Now;
 
-        string obstacle = "*";
+        Obstakel obstakel = new Obstakel();
 
-        int obstacleXpos = randomnummer.Next(1, screenwidth);
+        obstakel.karacter = "*";
 
-        int obstacleYpos = randomnummer.Next(1, screenheight);
+        obstakel.schermKleur = ConsoleColor.Cyan;
+
+        obstakel.xPos = randomnummer.Next(1, screenwidth);
+
+        obstakel.yPos = randomnummer.Next(1, screenheight);
 
         while (true)
 
@@ -63,11 +67,11 @@ class Program
 
             //Draw Obstacle
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = obstakel.schermKleur;
 
-            Console.SetCursorPosition(obstacleXpos, obstacleYpos);
+            Console.SetCursorPosition(obstakel.xPos, obstakel.yPos);
 
-            Console.Write(obstacle);
+            Console.Write(obstakel.karacter);
 
 
 
@@ -211,15 +215,15 @@ class Program
 
             //Hindernis treffen
 
-            if (hoofd.xPos == obstacleXpos && hoofd.yPos == obstacleYpos)
+            if (hoofd.xPos == obstakel.xPos && hoofd.yPos == obstakel.yPos)
 
             {
 
                 score++;
 
-                obstacleXpos = randomnummer.Next(1, screenwidth);
+                obstakel.xPos = randomnummer.Next(1, screenwidth);
 
-                obstacleYpos = randomnummer.Next(1, screenheight);
+                obstakel.yPos = randomnummer.Next(1, screenheight);
 
             }
 
