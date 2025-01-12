@@ -55,9 +55,9 @@ class Program
 
         obstakel.schermKleur = ConsoleColor.Cyan;
 
-        obstakel.xPos = randomnummer.Next(1, screenwidth);
+        obstakel.xPos = randomnummer.Next(1, screenwidth - 1);
 
-        obstakel.yPos = randomnummer.Next(1, screenheight);
+        obstakel.yPos = randomnummer.Next(1, screenheight - 1);
 
         while (true)
 
@@ -221,9 +221,9 @@ class Program
 
                 score++;
 
-                obstakel.xPos = randomnummer.Next(1, screenwidth);
+                obstakel.xPos = randomnummer.Next(1, screenwidth - 1);
 
-                obstakel.yPos = randomnummer.Next(1, screenheight);
+                obstakel.yPos = randomnummer.Next(1, screenheight - 1);
 
             }
 
