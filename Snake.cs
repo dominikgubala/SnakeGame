@@ -237,21 +237,7 @@ class Program
 
             {
 
-                Console.Clear();
-
-                Console.ForegroundColor = ConsoleColor.Red;
-
-                Console.SetCursorPosition(screenwidth / 5, screenheight / 2);
-
-                Console.WriteLine("Game Over");
-
-                Console.SetCursorPosition(screenwidth / 5, screenheight / 2 + 1);
-
-                Console.WriteLine("Dein Score ist: " + score);
-
-                Console.SetCursorPosition(screenwidth / 5, screenheight / 2 + 2);
-
-                Environment.Exit(0);
+                gameOver(score, screenwidth, screenheight);
 
             }
 
@@ -263,21 +249,7 @@ class Program
 
                 {
 
-                    Console.Clear();
-
-                    Console.ForegroundColor = ConsoleColor.Red;
-
-                    Console.SetCursorPosition(screenwidth / 5, screenheight / 2);
-
-                    //???
-
-                    Console.SetCursorPosition(screenwidth / 5, screenheight / 2 + 1);
-
-                    Console.WriteLine("Dein Score ist: " + score);
-
-                    Console.SetCursorPosition(screenwidth / 5, screenheight / 2 + 2);
-
-                    Environment.Exit(0);
+                    gameOver(score, screenwidth, screenheight);
 
                 }
 
@@ -287,6 +259,26 @@ class Program
 
         }
 
+    }
+
+    private static void gameOver(int score, int screenwidth, int screenheight)
+
+    {
+        Console.Clear();
+
+        Console.ForegroundColor = ConsoleColor.Red;
+
+        Console.SetCursorPosition(screenwidth / 5, screenheight / 2);
+
+        Console.WriteLine("Game Over");
+
+        Console.SetCursorPosition(screenwidth / 5, screenheight / 2 + 1);
+
+        Console.WriteLine("Dein Score ist: " + score);
+
+        Console.SetCursorPosition(screenwidth / 5, screenheight / 2 + 2);
+
+        Environment.Exit(0);
     }
 
 }
