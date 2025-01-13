@@ -37,14 +37,10 @@ class Program
 
 
 
-        List<int> teljePositie = new List<int>();
+        List<Pixel> teljePositie = new List<Pixel>();
 
 
-
-        teljePositie.Add(hoofd.xPos);
-
-        teljePositie.Add(hoofd.yPos);
-
+        teljePositie.Add(hoofd);
 
 
         DateTime tijd = DateTime.Now;
@@ -73,13 +69,14 @@ class Program
 
             Console.Write(obstakel.karacter);
 
+            //Draw Snake
 
-
-            Console.ForegroundColor = ConsoleColor.Green;
-
-            Console.SetCursorPosition(hoofd.xPos, hoofd.yPos);
-
-            Console.Write("■");
+            foreach (Pixel segment in teljePositie)
+            {
+                Console.SetCursorPosition(segment.xPos, segment.yPos);
+                Console.ForegroundColor = segment.schermKleur;
+                Console.Write("■");
+            }
 
 
 
@@ -142,24 +139,6 @@ class Program
                 Console.Write("■");
 
             }
-
-            //Draw Snake
-
-            Console.SetCursorPosition(hoofd.xPos, hoofd.yPos);
-
-            Console.Write("■");
-
-            Console.SetCursorPosition(hoofd.xPos, hoofd.yPos);
-
-            Console.Write("■");
-
-            Console.SetCursorPosition(hoofd.xPos, hoofd.yPos);
-
-            Console.Write("■");
-
-            Console.SetCursorPosition(hoofd.xPos, hoofd.yPos);
-
-            Console.Write("■");
 
 
 
@@ -225,15 +204,20 @@ class Program
 
                 obstakel.yPos = randomnummer.Next(1, screenheight - 1);
 
+                Pixel lastSegment = teljePositie[teljePositie.Count - 1];
+                teljePositie.Add(new Pixel { xPos = lastSegment.xPos, yPos = lastSegment.yPos, schermKleur = lastSegment.schermKleur });
             }
 
-            teljePositie.Insert(0, hoofd.xPos);
 
-            teljePositie.Insert(1, hoofd.yPos);
+            for (int i = teljePositie.Count - 1; i > 0; i--)
+            {
+                teljePositie[i].xPos = teljePositie[i - 1].xPos;
+                teljePositie[i].yPos = teljePositie[i - 1].yPos;
+            }
 
-            teljePositie.RemoveAt(teljePositie.Count - 1);
 
-            teljePositie.RemoveAt(teljePositie.Count - 1);
+            teljePositie[0].xPos = hoofd.xPos;
+            teljePositie[0].yPos = hoofd.yPos;
 
             //Kollision mit Wände oder mit sich selbst
 
