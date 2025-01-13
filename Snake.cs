@@ -279,6 +279,19 @@ class Program
 
             }
 
+            Pixel head = new Pixel() { xPos = hoofd.xPos, yPos = hoofd.yPos };
+
+            foreach (Pixel pixel in teljePositie.Skip(3))
+
+            {
+              
+                if (head.xPos == pixel.xPos && head.yPos == pixel.yPos)
+
+                {
+                    gameOver(score, screenwidth, screenheight);
+                }
+            }
+
             Thread.Sleep(50);
 
         }
