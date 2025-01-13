@@ -220,7 +220,7 @@ class Program
 
                 //Hindernis treffen
 
-                if (hoofd.xPos == obstakel.xPos && hoofd.yPos == obstakel.yPos)
+            if (hoofd.xPos == obstakel.xPos && hoofd.yPos == obstakel.yPos)
 
             {
 
@@ -230,8 +230,22 @@ class Program
 
                 obstakel.yPos = randomnummer.Next(1, screenheight - 1);
 
-                Pixel lastSegment = teljePositie[teljePositie.Count - 1];
+                Pixel lastSegment;
+
+                if (score == 1)
+
+                {
+                    lastSegment = teljePositie[teljePositie.Count - 1];
+                    teljePositie.Add(new Pixel { xPos = lastSegment.xPos, yPos = lastSegment.yPos, schermKleur = lastSegment.schermKleur });
+                }
+
+                teljePositie[0].xPos = hoofd.xPos;
+                teljePositie[0].yPos = hoofd.yPos;
+
+                lastSegment = teljePositie[teljePositie.Count - 1];
                 teljePositie.Add(new Pixel { xPos = lastSegment.xPos, yPos = lastSegment.yPos, schermKleur = lastSegment.schermKleur });
+
+
             }
 
 
@@ -240,10 +254,6 @@ class Program
                 teljePositie[i].xPos = teljePositie[i - 1].xPos;
                 teljePositie[i].yPos = teljePositie[i - 1].yPos;
             }
-
-
-            teljePositie[0].xPos = hoofd.xPos;
-            teljePositie[0].yPos = hoofd.yPos;
 
             //Kollision mit Wände oder mit sich selbst
 
