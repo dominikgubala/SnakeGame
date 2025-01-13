@@ -55,6 +55,8 @@ class Program
 
         obstakel.yPos = randomnummer.Next(1, screenheight - 1);
 
+        bool inExit = false;
+
         while (true)
 
         {
@@ -128,7 +130,11 @@ class Program
 
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.Write("H");
+            if (inExit)
+
+            {
+                Console.Write("Press ESC again to exit the game");
+            }
 
             for (int i = 0; i < telje.Count(); i++)
 
@@ -174,7 +180,27 @@ class Program
 
                     break;
 
+                case ConsoleKey.Escape:
+
+                    if (inExit)
+
+                    {
+                        gameOver(score, screenwidth, screenheight);
+
+                        return;
+                    }
+
+                    else
+
+                    {
+                        inExit = true;
+
+                        continue;
+                    }
+
             }
+
+            inExit = false;
 
             if (movement == "UP")
 
@@ -192,9 +218,9 @@ class Program
 
                 hoofd.xPos++;
 
-            //Hindernis treffen
+                //Hindernis treffen
 
-            if (hoofd.xPos == obstakel.xPos && hoofd.yPos == obstakel.yPos)
+                if (hoofd.xPos == obstakel.xPos && hoofd.yPos == obstakel.yPos)
 
             {
 
