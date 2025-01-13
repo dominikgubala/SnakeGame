@@ -19,4 +19,4 @@ Gra to klasyczna implementacja Snake'a, gdzie sterujesz wężem poruszającym si
   ```bash
   SnakeGame.exe
 - Lub kliknij dwukrotnie na plik **SnakeGame.exe** w eksploratorze plików.
-- Gra uruchomi się w oknie konsoli. Steruj wężem za pomocą klawiszy strzałek i zbieraj punkty!
+- Gra uruchomi się w oknie konsoli - zmaksymalizuj rozmiar okna. Steruj wężem za pomocą klawiszy strzałek i zbieraj punkty!
